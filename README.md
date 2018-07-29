@@ -38,24 +38,11 @@ node
 ```
 let blockchain = new Blockchain();
 ```
-5: Generate 10 blocks using a for loop
+5: Generate 10 blocks using the function batchAddBlock
 ```
-for (var i = 0; i <= 10; i++) {
-  blockchain.addBlock(new Block("test data "+i));
-}
+blockchain.batchAddBlock();
 ```
 6: Validate blockchain
-```
-blockchain.validateChain();
-```
-7: Induce errors by changing block data
-```
-let inducedErrorBlocks = [2,4,7];
-for (var i = 0; i < inducedErrorBlocks.length; i++) {
-  blockchain.chain[inducedErrorBlocks[i]].data='induced chain error';
-}
-```
-8: Validate blockchain. The chain should now fail with blocks 2,4, and 7.
 ```
 blockchain.validateChain();
 ```
