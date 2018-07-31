@@ -2,23 +2,9 @@
 |  Learn more: Crypto-js: https://github.com/brix/crypto-js  |
 |  =========================================================*/
 
+const Block = require('./block')
 const SHA256 = require('crypto-js/sha256');
 const leveldb = require('./levelSandbox');
-
-
-/* ===== Block Class ==============================
-|  Class with a constructor for block 			   |
-|  ===============================================*/
-
-class Block{
-	constructor(data){
-     this.hash = "",
-     this.height = 0,
-     this.body = data,
-     this.time = 0,
-     this.previousBlockHash = ""
-    }
-}
 
 /* ===== Blockchain Class ==========================
 |  Class with a constructor for new blockchain 		|
@@ -65,7 +51,7 @@ class Blockchain{
   // get block
   async getBlock (blockHeight) {
     const block = await leveldb.getBlock(blockHeight)
-    return JSON.parse(block)
+    return block
   }
 
   // get chain
